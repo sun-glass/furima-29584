@@ -2,10 +2,13 @@ class Item < ApplicationRecord
   with_options presence: true do
     validates :name
     validates :text
-    validates :image 
-    validates :price
+    validates :image
   end
   
+  with_options presence: true, numericality: {only_integer: true, greater_than: 300, less_than: 9999999 } do
+  validates :price
+  end
+
   with_options presence: true, numericality: { other_than: 1 ,message: 'Select'} do
   validates :category_id
   validates :status_id
