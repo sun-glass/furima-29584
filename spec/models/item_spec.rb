@@ -27,25 +27,50 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank", 'Category Select')
       end
+      it 'カテゴリーの選択が１だと登録できないこと' do
+        @item.category_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Category Select")
+      end
       it '商品の状態が未選択だと登録できないこと' do
         @item.status_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Status can't be blank", 'Status Select')
+      end
+      it '商品の状態の選択が１だと登録できないこと' do
+        @item.status_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Status Select")
       end
       it '配送料の負担が未選択だと登録できないこと' do
         @item.delivery_fee_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Delivery fee can't be blank", 'Delivery fee Select')
       end
+      it '配送料の負担の選択が１だと登録できないこと' do
+        @item.delivery_fee_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Delivery fee Select")
+      end
       it '発送元の地域が未選択だと登録できないこと' do
         @item.prefecture_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture Select')
       end
+      it '発送元の地域の選択が１だと登録できないこと' do
+        @item.prefecture_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Prefecture Select")
+      end
       it '発送までの日数が未選択だと登録できないこと' do
         @item.shipping_day_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping day can't be blank", 'Shipping day Select')
+      end
+      it '発送までの日数の選択が１だと登録できないこと' do
+        @item.shipping_day_id = '1'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Shipping day Select")
       end
       it '販売価格が空だと登録できないこと' do
         @item.price = ''
@@ -62,15 +87,25 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than 9999999')
       end
-      it '販売価格は半角数字のみ保存可能であること（全角文字）' do
+      it '販売価格は（全角文字）だと登録できないこと' do
         @item.price = 'テスト'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
       end
-      it '販売価格は半角数字のみ保存可能であること（全角数字）' do
+      it '販売価格は（全角数字）だと登録できないこと' do
         @item.price = '１２３４５'
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is not a number')
+      end
+      it '販売価格は（半角英数字混合）だと登録できないこと' do
+        @item.price = '123abc'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
+      end
+      it '販売価格は（半角英語）だと登録できないこと' do
+        @item.price = 'abcdefg'
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Price is not a number")
       end
       it '出品画像が空だと登録できないこと' do
         @item.image = nil
