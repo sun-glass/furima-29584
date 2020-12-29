@@ -61,7 +61,7 @@ describe User do
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
       it 'パスワードは半角英数字混合であること(全角)' do
-        @user.password ='ああああああ'
+        @user.password = 'ああああああ'
         @user.valid?
         expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
       end
