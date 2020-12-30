@@ -30,7 +30,7 @@ RSpec.describe Item, type: :model do
       it 'カテゴリーの選択が１だと登録できないこと' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category Select")
+        expect(@item.errors.full_messages).to include('Category Select')
       end
       it '商品の状態が未選択だと登録できないこと' do
         @item.status_id = ''
@@ -40,7 +40,7 @@ RSpec.describe Item, type: :model do
       it '商品の状態の選択が１だと登録できないこと' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status Select")
+        expect(@item.errors.full_messages).to include('Status Select')
       end
       it '配送料の負担が未選択だと登録できないこと' do
         @item.delivery_fee_id = ''
@@ -50,7 +50,7 @@ RSpec.describe Item, type: :model do
       it '配送料の負担の選択が１だと登録できないこと' do
         @item.delivery_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Delivery fee Select")
+        expect(@item.errors.full_messages).to include('Delivery fee Select')
       end
       it '発送元の地域が未選択だと登録できないこと' do
         @item.prefecture_id = ''
@@ -60,7 +60,7 @@ RSpec.describe Item, type: :model do
       it '発送元の地域の選択が１だと登録できないこと' do
         @item.prefecture_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Prefecture Select")
+        expect(@item.errors.full_messages).to include('Prefecture Select')
       end
       it '発送までの日数が未選択だと登録できないこと' do
         @item.shipping_day_id = ''
@@ -70,7 +70,7 @@ RSpec.describe Item, type: :model do
       it '発送までの日数の選択が１だと登録できないこと' do
         @item.shipping_day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping day Select")
+        expect(@item.errors.full_messages).to include('Shipping day Select')
       end
       it '販売価格が空だと登録できないこと' do
         @item.price = ''
@@ -83,7 +83,7 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include('Price must be greater than 300')
       end
       it '販売価格が9999999以上だと登録できないこと' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
         expect(@item.errors.full_messages).to include('Price must be less than 9999999')
       end
@@ -100,12 +100,12 @@ RSpec.describe Item, type: :model do
       it '販売価格は（半角英数字混合）だと登録できないこと' do
         @item.price = '123abc'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it '販売価格は（半角英語）だと登録できないこと' do
         @item.price = 'abcdefg'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is not a number")
+        expect(@item.errors.full_messages).to include('Price is not a number')
       end
       it '出品画像が空だと登録できないこと' do
         @item.image = nil
