@@ -23,9 +23,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if current_user.id != @item.user_id
-      redirect_to action: :index
-   end
   end
 
   def update
@@ -49,7 +46,7 @@ class ItemsController < ApplicationController
   end
 
   def move_to_index
-    unless user_signed_in?
+    unless current_user == @item.user_id
       redirect_to action: :index
     end
   end
