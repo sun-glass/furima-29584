@@ -1,3 +1,3 @@
 class Address < ApplicationRecord
-  belomgs_to :purucahse
+  belomgs_to :purcahse
 end
