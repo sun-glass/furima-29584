@@ -1,0 +1,2 @@
+class Purucahse < ApplicationRecord
+end
