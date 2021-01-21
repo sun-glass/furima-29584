@@ -21,7 +21,7 @@ class PurchasesController < ApplicationController
   private
 
   def purchase_params
-    params.require(:purchase_form).permit(:user_id, :item_id, :post_code, :prefecture_id, :city, :block, :building, :phon_number, :purchase_id)
+    params.require(:purchase_form).permit(:user_id, :item_id, :post_code, :prefecture_id, :city, :block, :building, :phon_number, :purchase_id).maerge(token: params[:token])
   end
 
   def set_item

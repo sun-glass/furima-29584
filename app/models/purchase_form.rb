@@ -1,6 +1,6 @@
 class PurchaseForm
   include ActiveModel::Model
-  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :city, :block, :building, :phon_number, :purchase_id
+  attr_accessor :user_id, :item_id, :post_code, :prefecture_id, :city, :block, :building, :phon_number, :purchase_id, :token
 
   with_options presence: true do
     validates :post_code, format: {with: /\A\d{3}[-]\d{4}\z/ }
