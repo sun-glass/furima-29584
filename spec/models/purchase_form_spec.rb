@@ -27,7 +27,7 @@ RSpec.describe PurchaseForm, type: :model do
       it '郵便番号が空だと登録できない' do
         @purchase_form.post_code = nil
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Post code can't be blank", 'Post code is invalid')
+        expect(@purchase_form.errors.full_messages).to include("Post code can't be blank")
       end
       it '郵便番号はハイフンを含むこと' do
         @purchase_form.post_code = 1_234_567
@@ -47,7 +47,7 @@ RSpec.describe PurchaseForm, type: :model do
       it '都道府県が未選択だと登録できないこと' do
         @purchase_form.prefecture_id = nil
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Prefecture can't be blank", 'Prefecture Select')
+        expect(@purchase_form.errors.full_messages).to include("Prefecture can't be blank")
       end
       it '都道府県の選択が１だと登録できないこと' do
         @purchase_form.prefecture_id = 1
@@ -107,9 +107,7 @@ RSpec.describe PurchaseForm, type: :model do
       it '電話番号が空だと登録できないこと' do
         @purchase_form.phon_number = ''
         @purchase_form.valid?
-        expect(@purchase_form.errors.full_messages).to include("Phon number can't be blank",
-                                                               'Phon number is not a number',
-                                                               'Phon number is too short (minimum is 10 characters)')
+        expect(@purchase_form.errors.full_messages).to include("Phon number can't be blank")
       end
       it '電話番号は半角数字であること(全角数字)' do
         @purchase_form.phon_number = '１２３４５６７８９０'
@@ -136,6 +134,16 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Phon number is too short (minimum is 10 characters)')
       end
+        it 'user_idが無ければ登録できないこと' do
+          @purchase_form.user_id = nil
+          @purchase_form.valid?
+          expect(@purchase_form.errors.full_messages).to include("User can't be blank")
+        end
+        it 'item_idが無ければ登録できないこと' do
+          @purchase_form.item_id = nil
+          @purchase_form.valid?
+          expect(@purchase_form.errors.full_messages).to include("Item can't be blank")
+        end
     end
   end
 end
