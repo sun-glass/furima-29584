@@ -4,7 +4,6 @@ class PurchasesController < ApplicationController
   before_action :move_to_index
   before_action :purchased, only: [:index, :create]
 
-
   def index
     @purchase_form = PurchaseForm.new
   end
@@ -31,24 +30,19 @@ class PurchasesController < ApplicationController
   end
 
   def move_to_index
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    end
+    redirect_to root_path if current_user.id == @item.user_id
   end
 
-def purchased
-  if @item.purchase != nil
-    redirect_to root_path
+  def purchased
+    redirect_to root_path unless @item.purchase.nil?
   end
-end
 
   def pry_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: @item.price,
       card: purchase_params[:token],
       currency: 'jpy'
     )
   end
-
 end
