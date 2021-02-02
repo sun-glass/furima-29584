@@ -134,16 +134,16 @@ RSpec.describe PurchaseForm, type: :model do
         @purchase_form.valid?
         expect(@purchase_form.errors.full_messages).to include('Phon number is too short (minimum is 10 characters)')
       end
-        it 'user_idが無ければ登録できないこと' do
-          @purchase_form.user_id = nil
-          @purchase_form.valid?
-          expect(@purchase_form.errors.full_messages).to include("User can't be blank")
-        end
-        it 'item_idが無ければ登録できないこと' do
-          @purchase_form.item_id = nil
-          @purchase_form.valid?
-          expect(@purchase_form.errors.full_messages).to include("Item can't be blank")
-        end
+      it 'user_idが無ければ登録できないこと' do
+        @purchase_form.user_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("User can't be blank")
+      end
+      it 'item_idが無ければ登録できないこと' do
+        @purchase_form.item_id = nil
+        @purchase_form.valid?
+        expect(@purchase_form.errors.full_messages).to include("Item can't be blank")
+      end
     end
   end
 end
