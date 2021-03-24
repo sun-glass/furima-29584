@@ -10,7 +10,7 @@ fuirma
 ## 商品詳細画面
 ![商品詳細](https://i.gyazo.com/95400ce98f5b1f3c430a96ddeadc5652.png)
 # 開発環境
-##バックエンド
+## バックエンド
 Ruby,Ruby on rails
 ## フロントエンド
 HTML CSS
