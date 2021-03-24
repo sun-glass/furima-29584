@@ -1,5 +1,28 @@
-# README テーブル設計
-
+# アプリ名
+fuirma
+# 概要
+ユーザー登録機能、商品出品機能、出品商品の編集と削除、商品購入（クレジットカード決済）機能を実装
+# DEMO
+## トップページ
+![toppage](https://i.gyazo.com/8a8ba8633579d8f8c9072f94c783ace0.png)
+## 購入画面
+![購入画面](https://i.gyazo.com/eaa8c92a916a2bbfd5a3d6f941703b58.png)
+## 商品詳細画面
+![商品詳細](https://i.gyazo.com/95400ce98f5b1f3c430a96ddeadc5652.png)
+# 開発環境
+##バックエンド
+Ruby,Ruby on rails
+## フロントエンド
+HTML CSS
+## データベース
+MySQL,SequelPro
+## インフラ
+AWS（S3）
+## テスト
+RSpec
+## エディタ
+VSCode
+# DB設計
 ## users テーブル
 | Column             | Type   | Options                   |
 |--------------------|--------|---------------------------|
