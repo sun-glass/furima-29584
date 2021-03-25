@@ -2,6 +2,12 @@
 furima
 # 概要
 ユーザー登録機能、商品出品機能、出品商品の編集と削除、商品購入（クレジットカード決済）機能を実装
+# 本番環境
+- [furima](https://furima-29584.herokuapp.com/#)
+- Basic認証
+    - ID: abechan
+    - パスワード 1994
+
 # DEMO
 ## トップページ
 ![toppage](https://i.gyazo.com/8a8ba8633579d8f8c9072f94c783ace0.png)
